@@ -49,24 +49,34 @@ function ns.RegisterLSM()
   if not LSM then return false end
   local SOUND = LSM.MediaType and LSM.MediaType.SOUND or "sound"
   for _, list in ipairs({ ns.Victory, ns.Defeat }) do
-    for _, s in ipairs(list) do pcall(LSM.Register, LSM, SOUND, PREFIX .. s[1], s[2]) end
+    for _, s in ipairs(list) do
+      -- one LibSharedMedia entry per sound across our addons (QuestieJobsDone also offers "Job's done!")
+      if ns.Hub.ClaimSound(s[2], PREFIX .. s[1]) then pcall(LSM.Register, LSM, SOUND, PREFIX .. s[1], s[2]) end
+    end
   end
   added.lsm = true
   return true
 end
+
+ns.Core.Setup({ cmd = "/wipewin", required = { "PlaySoundFile" },
+  optional = { "DBM.AddVictorySound", "DBM.AddDefeatSound", "LibStub" },
+  debugLines = function()
+    return { ("added to DBM: victory %s, defeat %s; LibSharedMedia (BigWigs): %s"):format(tostring(added.victory), tostring(added.defeat), tostring(added.lsm)) }
+  end })
 
 local function say(msg) print("|cffffd200Wipe & Win|r: " .. msg) end
 
 SLASH_WIPEANDWIN1 = "/wipewin"
 SlashCmdList.WIPEANDWIN = function(msg)
   msg = strtrim((msg or ""):lower())
+  if msg == "debug" then ns.Core.PrintDebug() return end
   local which, n = msg:match("^(%a+)%s*(%d*)$")
   local list = (which == "win" and ns.Victory) or (which == "wipe" and ns.Defeat)
   if list then
     if InCombatLockdown() then say("not in combat.") return end
     local s = list[tonumber(n) or 1]
     if not s then say(("pick 1-%d."):format(#list)) return end
-    pcall(PlaySoundFile, s[2], "Master")
+    if not ns.Hub.PlayVoice(s[2], "Master", LENGTH) then say("another voice line is playing; try again in a moment.") return end
     say(s[1])
     return
   end
@@ -80,7 +90,10 @@ end
 local ev = CreateFrame("Frame")
 ev:RegisterEvent("ADDON_LOADED")
 ev:RegisterEvent("PLAYER_LOGIN")
+ev:RegisterEvent("ENCOUNTER_END")
 ev:SetScript("OnEvent", function(self, event)
+  -- DBM plays its victory/defeat sound now: our other addons' voice lines wait until it is over.
+  if event == "ENCOUNTER_END" then if added.victory or added.defeat or added.lsm then ns.Hub.MarkVoiceBusy(LENGTH) end return end
   -- LSM may come in with a later addon (BigWigs, a load-on-demand host), so keep trying until it is there.
   if ns.RegisterLSM() then self:UnregisterEvent("ADDON_LOADED") end
   if event == "PLAYER_LOGIN" then self:UnregisterEvent("PLAYER_LOGIN") end

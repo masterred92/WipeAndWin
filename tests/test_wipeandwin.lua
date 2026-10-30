@@ -30,4 +30,13 @@ M.slash("/wipewin", "wipe 9")
 M.check(M.printed("pick 1-"), "range check")
 M.combat = true; M.slash("/wipewin", "wipe 1"); M.combat = false
 M.check(#M.sounds == 1, "no preview in combat")
+-- 1.1.0: our other addons' voice lines wait while DBM plays the victory/defeat sound
+local hub = KennyAddonsHub
+hub.voiceUntil = 0
+M.fire("ENCOUNTER_END", 1, "Boss", 1, 10, 1)
+M.check(hub.voiceUntil > GetTime(), "quiet for other voice lines after a boss")
+M.check(hub.PlayVoice(558132) == false, "a Job's done! line now waits")
+local claimed = 0
+for _ in pairs(hub.sounds) do claimed = claimed + 1 end
+M.check(claimed == 0 or hub.sounds[558132] ~= nil, "LibSharedMedia sounds claimed once across our addons")
 M.done("WipeAndWin")

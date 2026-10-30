@@ -1,6 +1,6 @@
 <p align="center"><img src="media/logo.png" alt="Wipe & Win Lines logo" width="200"></p>
 
-# Wipe & Win Lines (WoW: Forever) v1.0.0
+# Wipe & Win Lines (WoW: Forever) v1.1.0
 
 [![Tests](https://github.com/masterred92/WipeAndWin/actions/workflows/tests.yml/badge.svg)](https://github.com/masterred92/WipeAndWin/actions/workflows/tests.yml) [![WoW: Forever](https://img.shields.io/badge/WoW%3A%20Forever-Interface%2016001-c8a165)](https://github.com/masterred92/WipeAndWin/blob/main/WipeAndWin.toc) [![Release](https://img.shields.io/github/v/release/masterred92/WipeAndWin?label=release)](https://github.com/masterred92/WipeAndWin/releases) [![License: MIT](https://img.shields.io/github/license/masterred92/WipeAndWin)](https://github.com/masterred92/WipeAndWin/blob/main/LICENSE)
 
@@ -15,6 +15,8 @@ DBM can play a sound when you kill a boss and another when you wipe. **Wipe & Wi
 <p align="center"><img src="media/screenshots/mockup-dbm.png" alt="Wipe & Win Lines preview" width="560"></p>
 
 **Needs:** Optional: [DBM](https://www.curseforge.com/wow/addons/deadly-boss-mods) (victory and defeat lists) and any addon that uses LibSharedMedia sounds, such as BigWigs.
+
+**Works with:** DBM (required), BigWigs through LibSharedMedia. Never talks over BRBoss, Questie: Job's Done or a Grunt Count countdown; the shared 'Job's done!' sound appears once in LibSharedMedia.
 
 ## Download
 - **Wago Addons:** coming at launch (Nov 4). The link goes here when the project is live.
