@@ -6,7 +6,7 @@
 
 DBM can play a sound when you kill a boss and another when you wipe. **Wipe & Win Lines** adds vanilla lines to those lists, so a kill can end with the peon's "Job's done!" or the PvP victory fanfare, and a wipe with Ragnaros' "DIE, INSECT!" or a murloc gurgle.
 
-- **DBM:** the lines show up in DBM > Options > Sound > Victory/Defeat sound, next to DBM's own. They're loaded through DBM's own sound-pack hook.
+- **DBM:** the lines show up in DBM > Options > Event sounds, next to DBM's own. They're loaded through DBM's own sound-pack hook.
 - **LibSharedMedia:** the same lines are registered as LSM sounds, so BigWigs, WeakAuras and anything else with an LSM sound picker can use them.
 - **Nothing bundled:** every line is a sound that's already in the WoW: Forever client, played by its sound ID.
 - `/wipewin` lists the lines, and `/wipewin win 1` or `/wipewin wipe 3` previews one (not in combat).
@@ -33,7 +33,7 @@ Put the `WipeAndWin` folder in `World of Warcraft\_forever_\Interface\AddOns\` a
 ## In-game test checklist (launch day)
 1. Listed in AddOns with its icon.
 2. `/wipewin win 1` and `/wipewin wipe 1` play a line. Check each line matches its label.
-3. DBM > Options > Sound: the 'Wipe & Win:' lines appear in the Victory and Defeat dropdowns and preview.
+3. DBM > Options > Event sounds: the 'Wipe & Win:' lines appear in the Victory and Defeat dropdowns and preview.
 4. BigWigs (or another LSM user): 'Wipe & Win:' sounds are in its sound picker.
 5. Kill something with a DBM mod (e.g. a dungeon boss) with a Wipe & Win victory line chosen: it plays.
 
