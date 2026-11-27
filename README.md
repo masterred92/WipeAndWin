@@ -19,9 +19,9 @@ DBM can play a sound when you kill a boss and another when you wipe. **Wipe & Wi
 **Works with:** DBM (required), BigWigs through LibSharedMedia. Never talks over BRBoss, Questie: Job's Done or a Grunt Count countdown; the shared 'Job's done!' sound appears once in LibSharedMedia.
 
 ## Download
-- **Wago Addons:** coming at launch (Nov 4). The link goes here when the project is live.
-- **CurseForge:** maybe later.
-- **GitHub:** [Releases](https://github.com/masterred92/WipeAndWin/releases) (from the first tagged release) · [Issues](https://github.com/masterred92/WipeAndWin/issues)
+- **CurseForge:** link coming as soon as the project is live. Author: [MasterRed92](https://www.curseforge.com/members/masterred92/projects).
+- **Wago Addons:** link coming as soon as the project is live.
+- **GitHub:** [Releases](https://github.com/masterred92/WipeAndWin/releases) · [Issues](https://github.com/masterred92/WipeAndWin/issues)
 - **More by Kenny:** [BRBoss](https://github.com/masterred92/BRBoss) · [GruntCount](https://github.com/masterred92/GruntCount) · [FloorIsLava](https://github.com/masterred92/FloorIsLava) · [all WoW: Forever addons](https://github.com/masterred92/wow-forever-addons)
 
 ## Commands
